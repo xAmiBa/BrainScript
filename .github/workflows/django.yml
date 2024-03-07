@@ -16,9 +16,9 @@ jobs:
         python-version: [3.11]
 
     env:
-      DEBUG: 1
-      SECRET_KEY: "secret_key"
-      DJANGO_ALLOWED_HOSTS: "* localhost 127.0.0.1 [::1]"
+      DEBUG: ${{ secrets.DEBUG }}
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      DJANGO_ALLOWED_HOSTS: ${{ secrets.DJANGO_ALLOWED_HOSTS }}
   
 
     steps:
