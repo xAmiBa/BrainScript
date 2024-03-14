@@ -11,6 +11,7 @@ class Project(
     ActivatorModel,
     Model
 ):
+    # REFACTOR does status field (Active, Inactive) in model can replace public field?
     class Meta:
         verbose_name_plural = "Projects"
     
@@ -21,9 +22,9 @@ class Project(
     resources = models.JSONField(blank=False)
 
     # TODO: foregin owner id will be added when user account implemented, it's null for now
-    owner = models.CharField(default=None, max_length=30)
+    author = models.CharField(default=None, max_length=30)
 
     def __str__(self) -> str:
         return super().__str__()
 
-    
+# TODO: User class for user management when auth implemented
