@@ -77,3 +77,18 @@ As a user I can add my repo links to porjects ideas to showcase what I did
 
 API:
 Prompt will ask for json file output
+
+Example output:
+```
+{
+    "title" : "BeautyHub: A Makeup Art Showcase",
+    "description" : "BeautyHub is a web platform that allows makeup artists to create profiles, upload their work, and connect with potential clients. As a beginner-friendly project, this will enhance your Python skills through backend development with Django, while your advanced HTML and CSS knowledge will be put to use in crafting a beautiful, responsive frontend. Users can register, upload images of their makeup art, describe the products used, and interact through comments. This project aims to embrace the art of makeup, providing a space where artists can share their work and makeup enthusiasts can discover new trends and artists.",
+    "technologies" : ["Python", "HTML", "CSS", "Django"],
+    "resources" : [
+        {"title": "Django for Beginners", "link": "https://www.djangoproject.com/start/"},
+        {"title": "CSS-Tricks for advanced styling", "link": "https://css-tricks.com/"},
+        {"title": "HTML5 Documentation", "link": "https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5"},
+        {"title": "Bootstrap for responsive design", "link": "https://getbootstrap.com/docs/5.0/getting-started"}]
+    }
+
+```
