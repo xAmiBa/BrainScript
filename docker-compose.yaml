@@ -21,4 +21,4 @@ services:
     platform: linux/amd64
     restart: unless-stopped
     ports:
-      - 5000:5000
+      - 5001:5001
