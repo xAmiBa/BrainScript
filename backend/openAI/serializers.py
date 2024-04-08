@@ -8,22 +8,17 @@ class ProjectSerializer(serializers.ModelSerializer):
 
     jsonDec = json.decoder.JSONDecoder()
 
-    title = CharField(source="title")
-    description = CharField(source="description")
-    author = CharField(source="author")
+    author = CharField()
 
     # technologies and resources are stored as JSON list and dict
     # decoded to be served in Python format
-    technologies = JSONField(source="technologies")
-    resources = JSONField(source="resources")
+    project = JSONField()
+ 
 
 	
     class Meta:
         model = models.Project
         fields = (
-            "title",
-            "description",
-            "technologies",
-            "resources",
-            "author"
+            "author",
+            "project",
 		)
