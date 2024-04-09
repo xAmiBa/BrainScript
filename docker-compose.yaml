@@ -1,24 +1,34 @@
 version: '3.7'
 services:
 
-  api:
+  backend:
     build:
       context: ./backend
-      dockerfile: docker/docker_files/Dockerfile
+      dockerfile: docker/Dockerfile
+    image: brainscript:backend
     restart: unless-stopped
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - ./backend:/code
+      - ./backend:/backend
     ports:
       - 8000:8000
     env_file:
-      - .env
+      - ./.env
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
 
-  app:
+  frontend:
     build:
-      context: .
-      dockerfile: backend/docker/docker_files/Dockerfile_app
+      context: ./frontend
+      dockerfile: docker/Dockerfile_frontend
+    image: brainscript:frontend
     platform: linux/amd64
     restart: unless-stopped
     ports:
       - 5001:5001
+    volumes:
+      - ./frontend:/frontend
+    env_file:
+      - .env
+    environment:
+    - PORT=5001

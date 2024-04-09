@@ -92,3 +92,34 @@ Example output:
     }
 
 ```
+
+
+!!!! RESPONSE WE GET FROM OPENAI API:
+You need to access content and convert it jons.loads(content) into json
+```
+{
+    "data": {
+        "title": "Football Match Scheduler",
+        "description": "Create a web application that allows users to schedule and organize football matches with their friends. The application will have features such as creating match events, inviting players, viewing player availability, and managing match details. Users can also view match history and statistics.",
+        "technologies": [
+            "Python",
+            "JavaScript",
+            "HTML",
+            "CSS",
+            "Django",
+            "React"
+        ],
+        "resources": [
+            {
+                "title": "Django documentation",
+                "link": "https://docs.djangoproject.com/en/3.2/"
+            },
+            {
+                "title": "React documentation",
+                "link": "https://reactjs.org/docs/getting-started.html"
+            }
+        ],
+        "author": "test user"
+    }
+}
+```

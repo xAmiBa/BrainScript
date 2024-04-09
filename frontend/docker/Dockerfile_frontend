@@ -1,0 +1,15 @@
+FROM node:21
+
+WORKDIR /frontend
+
+COPY public/ /frontend/public
+COPY src/ /frontend/src
+COPY package.json /frontend/
+COPY package-lock.json /frontend/
+
+RUN npm install
+CMD ["npm", "start"]
+
+RUN npm run build
+RUN npm install -g serve
+ENV PORT 5001
