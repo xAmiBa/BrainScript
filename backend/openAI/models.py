@@ -18,7 +18,7 @@ class Project(
     project = models.JSONField(blank=False)
 
     # TODO: foregin owner id will be added when user account implemented, it's null for now
-    author = models.CharField(default=None, max_length=30)
+    author = models.CharField(default=None, max_length=30, blank=True, null=True)
 
     def __str__(self) -> str:
         return super().__str__()

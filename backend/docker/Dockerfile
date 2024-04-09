@@ -10,6 +10,7 @@ WORKDIR /backend
 
 # Install dependencies
 COPY requirements.txt /backend/
+RUN pip install requests
 RUN pip install -r requirements.txt
 
 # Copy the project code into the container
