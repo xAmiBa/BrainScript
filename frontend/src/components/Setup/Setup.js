@@ -3,6 +3,7 @@ import React from "react";
 const Setup = ( {navigate} ) => {
     return (
         <div>
+            <p>setup page</p>
             <form>
                 
             </form>
