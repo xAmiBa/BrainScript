@@ -26,4 +26,5 @@ urlpatterns = router.urls
 urlpatterns += [
     path("admin/", admin.site.urls),
     path("project/", openAI_views.ProjectAPIView.as_view()),
+    path("generate/", openAI_views.GenerateProject.as_view()),
 ]
