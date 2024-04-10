@@ -12,6 +12,10 @@ from openai import OpenAI
 import openai
 import os
 import json
+from .models import Project
+from django.http import JsonResponse
+from django.db import IntegrityError
+from django.core.exceptions import ValidationError
 
 
 class ProjectAPIView(views.APIView):
@@ -49,6 +53,28 @@ class GenerateProject(views.APIView):
     """
 
     def post(self, request, *args, **kwargs):
+        data = json.loads(request.body)
+        # interests = data.get("interests")
+        # skills = data.get("skills")
+        # skills_to_learn = data.get("skills_to_learn")
+        # area_of_programming = data.get("area_of_programming")
+        # author = data.get("author")
+        
+        # data.pop["author"]
+        # project = data
+
+        api_response = self.make_api_call(request)
+
+        if api_response.status_code == 200:
+            api_response = json(api_response)
+            save_status = self.save_new_project(api_response["data"], api_response["author"])
+            save_status = json(save_status)
+            return JsonResponse({"data": api_response["data"], "author": api_response["author"], "save_status": save_status}, status=200)
+        else:
+            return JsonResponse({"error": "API call failed"}, status=500)
+
+    
+    def make_api_call(self, request):
         client = OpenAI()
 
         data = json.loads(request.body)
@@ -58,7 +84,6 @@ class GenerateProject(views.APIView):
         area_of_programming = data.get("area_of_programming")
         author = data.get("author")
 
-        #TODO: should I add author too?
         try:
             response = client.chat.completions.create(
                 model="gpt-3.5-turbo",
@@ -88,14 +113,26 @@ class GenerateProject(views.APIView):
             pass
         except openai.RateLimitError as e:
             return JsonResponse({"error": str(e), "message": "OpenAI API request exceeded rate limit"}, status=500)
-
- 
+        
         data = response.json()
-
-        #TODO: I WANT TO SAVE IT INTO DB
 
         data = json.loads(data)
         data = data["choices"][0]["message"]["content"]
         data = json.loads(data)
-        data["author"] = author
-        return JsonResponse({"data": data}, status=200)
+
+        return JsonResponse({"data": data, "author": author}, status=200)
+    
+    def save_new_project(self, project, author):
+        try:
+            new_project = Project.objects.create(project=project, author=author)
+            new_project.save()
+            return JsonResponse({"message": "Project saved successfully"}, status=200)
+
+        except IntegrityError as e:
+            return JsonResponse({"error": "Integrity error while saving the project", "details": str(e)}, status=400)
+
+        except ValidationError as e:
+            return JsonResponse({"error": "Validation error on the project data", "details": e.message_dict}, status=400)
+
+        except Exception as e:
+            return JsonResponse({"error": "An unexpected error occurred while saving the project", "details": str(e)}, status=500)
