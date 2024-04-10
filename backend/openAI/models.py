@@ -11,7 +11,7 @@ class Project(
     ActivatorModel,
     Model
 ):
-    # REFACTOR does status field (Active, Inactive) in model can replace public field?
+    # REFACTOR  status field (Active, Inactive) in model can replace public field?
     class Meta:
         verbose_name_plural = "Projects"
     

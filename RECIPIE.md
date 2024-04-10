@@ -96,6 +96,7 @@ Example output:
 
 !!!! RESPONSE WE GET FROM OPENAI API:
 You need to access content and convert it jons.loads(content) into json
+!!! NOTE THAT AUTHOR MUST BE PRESENT IN REQUEST< EVEN AS EMPTY STRING>
 ```
 {
     "data": {
@@ -119,7 +120,8 @@ You need to access content and convert it jons.loads(content) into json
                 "link": "https://reactjs.org/docs/getting-started.html"
             }
         ],
-        "author": "test user"
-    }
+    },
+
+    "author": "test user"
 }
 ```

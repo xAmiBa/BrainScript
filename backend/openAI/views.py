@@ -12,6 +12,7 @@ from openai import OpenAI
 import openai
 import os
 import json
+from .models import Project
 
 
 class ProjectAPIView(views.APIView):
@@ -58,7 +59,6 @@ class GenerateProject(views.APIView):
         area_of_programming = data.get("area_of_programming")
         author = data.get("author")
 
-        #TODO: should I add author too?
         try:
             response = client.chat.completions.create(
                 model="gpt-3.5-turbo",
@@ -91,11 +91,11 @@ class GenerateProject(views.APIView):
 
  
         data = response.json()
-
-        #TODO: I WANT TO SAVE IT INTO DB
-
         data = json.loads(data)
         data = data["choices"][0]["message"]["content"]
         data = json.loads(data)
-        data["author"] = author
-        return JsonResponse({"data": data}, status=200)
+
+        new_project = Project.objects.create(project=data, author=author)
+        new_project.save()
+
+        return JsonResponse({"data": data, "author": author}, status=200)
