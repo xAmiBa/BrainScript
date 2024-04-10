@@ -1,6 +1,6 @@
 from . import models
 from rest_framework import serializers
-from rest_framework.fields import CharField, TextField, JSONField
+from rest_framework.fields import CharField, JSONField
 import json
 
 # Data for single project API response
@@ -8,20 +8,17 @@ class ProjectSerializer(serializers.ModelSerializer):
 
     jsonDec = json.decoder.JSONDecoder()
 
-    title = CharField(source="title")
-    description = TextField(source="description")
+    author = CharField()
 
     # technologies and resources are stored as JSON list and dict
     # decoded to be served in Python format
-    technologies = jsonDec.decode(JSONField(source="technologies"))
-    resources = jsonDec.decode(JSONField(source="resources"))
+    project = JSONField()
+ 
 
 	
     class Meta:
-        model = models.Contact
+        model = models.Project
         fields = (
-            "title",
-            "description",
-            "technologies",
-            "resources"
+            "author",
+            "project",
 		)

@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
+from openAI import views as openAI_views
 
 router = routers.DefaultRouter()
 
@@ -24,4 +25,5 @@ urlpatterns = router.urls
 
 urlpatterns += [
     path("admin/", admin.site.urls),
+    path("project/", openAI_views.ProjectAPIView.as_view()),
 ]
