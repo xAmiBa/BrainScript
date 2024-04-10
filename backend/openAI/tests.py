@@ -60,10 +60,10 @@ class ProjectTestCase(APITestCase):
     Test suite for generating new project API endpoint: /generate/
     Mocking OpenAI API calls
     """
+    #TODO: Mock OpenAI API response.
+
     def setUp(self):
         # with patch('openAI.views.')
-
-
         self.client = APIClient()
         self.data_mock = {
             "data": {
