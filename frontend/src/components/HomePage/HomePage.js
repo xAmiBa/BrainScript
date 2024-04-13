@@ -1,6 +1,5 @@
 import logo from '../../static/logo.gif';
 import React from 'react'
-import NextButton from '../NextButton/NextButton';
 
 
 const HomePage = ({ navigate }) => {
@@ -12,8 +11,8 @@ const HomePage = ({ navigate }) => {
     return (
         
         <div>
-            <NextButton onClick = {navigateToSetup}/>
-            <img src={logo} className="App-logo" alt="logo" />
+            <button className='next-button' onClick = {navigateToSetup}>NEXT</button>
+            <img src={logo} className="app-logo" alt="logo" />
             <p>
                 Welcome to
             </p>
