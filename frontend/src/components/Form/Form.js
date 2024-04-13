@@ -30,9 +30,6 @@ function Form() {
         }
     }
 
-    const isDisabled = Object.values(formData).some(value => value === "")
-
-
     return (
         <div className="form">
             <h1>Form</h1>
