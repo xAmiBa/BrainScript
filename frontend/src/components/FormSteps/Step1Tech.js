@@ -9,24 +9,25 @@ function Step1Tech({formData, setFormData}) {
 
   return (
     <div className='tech-container'>
-      <h3>description</h3>
-      <label for="skills">Skills</label>
+      <p className='description'>Thanks {formData.author}! Now, tell me about your current coding skills, any new techniques you're excited to learn, and what areas of programming you love most—whether it's backend, frontend, or something else. This way, I can help craft a project that’s perfect for your skill level and growth ambitions!</p>
+      <label for="skills">Your existing skills</label>
       <input
         type='text' 
         id="skills" 
         name="skills" 
-        placeholder="ex. Python beginner" 
+        placeholder="ex. HTML, CSS" 
         value={formData.skills}
         onChange={onChange}
+        requiired
         >
       </input>
 
-      <label for="skills_to_learn">Skills to learn</label>
+      <label for="skills_to_learn">Skills you want to learn</label>
       <input
         type='text' 
         id="skills_to_learn" 
         name="skills_to_learn" 
-        placeholder='ex. Intermediate Python, HTML, CSS' 
+        placeholder='ex. JavaScript' 
         value={formData.skills_to_learn}
         onChange={onChange}
         >
@@ -39,9 +40,9 @@ function Step1Tech({formData, setFormData}) {
         value={formData.area_of_programming}
         onChange={onChange}
       >
-        <option value="frontend">front-end</option>
-        <option value="backend">back-end</option>
-        <option value="full-stack">full-stack</option>
+        <option value="full-stack">Full Stack</option>
+        <option value="frontend">Frontend</option>
+        <option value="backend">Backend</option>
       </select>
     </div>
   )

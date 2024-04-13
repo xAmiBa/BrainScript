@@ -1,0 +1,16 @@
+.progress-bar {
+    display: flex;
+    /* flex-direction: column; */
+}
+
+.progress-point {
+    margin: 0 20px
+}
+
+#progress-valid.progress-point {
+    color: green;
+}
+
+#progress-invalid.progress-point {
+    color: red;
+}
