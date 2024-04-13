@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Step1Tech from "../FormSteps/Step1Tech";
 import Step2Interests from "../FormSteps/Step2Interests";
-import Step3AboutYou from "../FormSteps/Step3AboutYou";
+import Step0AboutYou from "../FormSteps/Step0AboutYou";
 import '../FormSteps/Step.css'
+import ProgressBar from '../ProgressBar/ProgressBar'
 
 function Form() {
 
@@ -17,50 +18,51 @@ function Form() {
     })
 
     // determine which title we display
-    const FormTitles = ["Your Tech Stack", "Your Interests", "About You"]
+    const FormTitles = ["About You", "Your Tech Stack", "Your Interests"]
 
     // determine which form to display
     const StepDispaly = () => {
         if (step === 0) {
-            return <Step1Tech formData={formData} setFormData={setFormData}/>
+            return <Step0AboutYou formData={formData} setFormData={setFormData}/>
         } else if (step === 1) {
-            return <Step2Interests formData={formData} setFormData={setFormData}/>
+            return <Step1Tech formData={formData} setFormData={setFormData}/>
         } else if (step === 2) {
-            return <Step3AboutYou formData={formData} setFormData={setFormData}/>
+            return <Step2Interests formData={formData} setFormData={setFormData}/>
         }
     }
+    const isInvalid = Object.values(formData).some(value => value.length < 3)
 
     return (
         <div className="form">
-            <h1>Form</h1>
-            <div className="progress-bar">
-                {/* TODO: progress bar div is white rectangle, this div is filling colour. Adjnust CSS percentages to manipulate progress bar */}
-                <div style={{width: step === 0 ? "33.3%" : step === 1 ? "66.6%" : "100%"}}>
-                </div>
+            {/* <h1>Form</h1> */}
+            <div className="progress-bar-container">
+                <ProgressBar formData={formData}/>
             </div>
             <div className="form-container">
                 <div className="header">
                     <h1>{FormTitles[step]}</h1>
                 </div>
-                <div className="body">{ StepDispaly() }</div>
+                <div className="body">
+                    { StepDispaly() }
+                </div>
                 <div className="footer">
                     <button
                     disabled={step === 0}
                     onClick={() => {
                         setStep((currentPage) => currentPage - 1)
                         }}
-                        >Prev</button>
-                    <button 
+                    >Prev</button>
+                    <button
+                    disabled={step === 2}
                     onClick={() => {
-                        if (step === 2) {
-                            // TODO: API CALL TO SEND THE DATA TO BACKEND
-                            alert("FORM SUBMITTED: ")
-                            console.log(formData)
-                        } else {
-                            setStep((currentPage) => currentPage + 1)
-                        }
+                        setStep((currentPage) => currentPage + 1)
                         }}
-                        >{step === 2 ? "Submit" : "Next"}</button>
+                    >Next</button>
+                    <button
+                    disabled={isInvalid}
+                    style={{display: isInvalid ? 'none' : 'block'}}
+                    //TODO: API CALL onClick={}
+                    > Submit</button>
                 </div>
             </div>
         </div>

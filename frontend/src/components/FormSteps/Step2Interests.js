@@ -10,8 +10,7 @@ const Step2Interests = ({formData, setFormData}) => {
 
   return (
       <div className='interests-container'>
-          <h3>description</h3>
-          <label for="skills">What excites you?</label>
+          <p className='description'>What do you love doing when you're not coding {formData.author}? Whether it's gaming, reading, hiking, or anything else, share your passions with me. I’ll use these to come up with a project idea that’s as unique and exciting as your hobbies!</p>
           <input 
             type='text' 
             id="interests" 
