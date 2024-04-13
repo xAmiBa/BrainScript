@@ -46,3 +46,4 @@ jobs:
       with:
         build: cd frontend && npm run build
         wait-on: 'http://localhost:5001'
+        working-directory: frontend
