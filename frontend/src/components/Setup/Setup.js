@@ -1,15 +1,9 @@
 import React from "react";
+import Form from "../Form/Form"
 
 const Setup = ( {navigate} ) => {
     return (
-        <div>
-            <p>setup page</p>
-            <form>
-                
-            </form>
-
-
-        </div>
+        <Form/>
     )
 }
 
