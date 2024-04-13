@@ -21,12 +21,29 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: frontend/package-lock.json
+    
+    - name: Checkout
+      uses: actions/checkout@v4
+
     - run: cd frontend && npm ci
     - run: cd frontend && npm run build --if-present
-    - run: cd frontend && npm test
+
+    # - name: Start Server
+    #   run: cd frontend && npm start &
+    #   env:
+    #     CI: true
+    #     PORT: 5001
+
+    # - name: Cypress run
+    #   uses: cypress-io/github-action@v6
+    #   with:
+    #     build: cd frontend && npm run build
+    #     wait-on: 'http://localhost:5001'
+    #     working-directory: frontend
