@@ -4,9 +4,11 @@ import Step2Interests from "../FormSteps/Step2Interests";
 import Step0AboutYou from "../FormSteps/Step0AboutYou";
 import '../FormSteps/Step.css'
 import ProgressBar from '../ProgressBar/ProgressBar'
+import handleProjectGeneration from "../../services/handleSubmit";
 
-function Form() {
+const Form = ({ navigate }) => {
 
+    console.log("ENV VARIABLE TEST: ", process.env.REACT_APP_GENERATE_PROJECT_API_URL)
     // determine which step we're in
     const [step, setStep] = useState(0);
     const [formData, setFormData] = useState({
@@ -31,6 +33,22 @@ function Form() {
         }
     }
     const isInvalid = Object.values(formData).some(value => value.length < 3)
+    // const [authError, setAuthError] = useState("");
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const apiGenerateUrl = process.env.REACT_APP_GENERATE_PROJECT_API_URL;
+        console.log("API URL IN FORM: ", apiGenerateUrl)
+        handleProjectGeneration(
+            navigate,
+            `${apiGenerateUrl}`,
+            formData.skills,
+            formData.skills_to_learn,
+            formData.author,
+            formData.interests,
+            formData.area_of_programming
+        )
+    }
 
     return (
         <div className="form">
@@ -61,7 +79,7 @@ function Form() {
                     <button
                     disabled={isInvalid}
                     style={{display: isInvalid ? 'none' : 'block'}}
-                    //TODO: API CALL onClick={}
+                    onClick={ handleSubmit }
                     > Submit</button>
                 </div>
             </div>

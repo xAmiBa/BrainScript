@@ -3,7 +3,7 @@ import Form from "../Form/Form"
 
 const Setup = ( {navigate} ) => {
     return (
-        <Form/>
+        <Form navigate={ navigate }/>
     )
 }
 
