@@ -5,6 +5,7 @@ import Step0AboutYou from "../FormSteps/Step0AboutYou.js";
 import '../FormSteps/Step.css'
 import ProgressBar from '../ProgressBar/ProgressBar'
 import handleProjectGeneration from "../../services/handleSubmit";
+import PrimaryButton from "../PrimaryButton/PrimaryButton.js";
 
 const Form = ({ navigate }) => {
 
@@ -51,7 +52,6 @@ const Form = ({ navigate }) => {
 
     return (
         <div className="form">
-            {/* <h1>Form</h1> */}
             <div className="progress-bar-container">
                 <ProgressBar formData={formData}/>
             </div>
@@ -63,23 +63,30 @@ const Form = ({ navigate }) => {
                     { StepDispaly() }
                 </div>
                 <div className="footer">
-                    <button
-                    disabled={step === 0}
-                    onClick={() => {
-                        setStep((currentPage) => currentPage - 1)
-                        }}
-                    >Prev</button>
-                    <button
-                    disabled={step === 2}
-                    onClick={() => {
-                        setStep((currentPage) => currentPage + 1)
-                        }}
-                    >Next</button>
-                    <button
-                    disabled={isInvalid}
-                    style={{display: isInvalid ? 'none' : 'block'}}
-                    onClick={ handleSubmit }
-                    > Submit</button>
+
+                    <PrimaryButton
+                        text="Previous Step"
+                        disabled={step === 0}
+                        onClick={() => {
+                            setStep((currentPage) => currentPage - 1)
+                            }}
+                    ></PrimaryButton>
+
+                    <PrimaryButton
+                        text="Next Step"
+                        disabled={step === 2}
+                        onClick={() => {
+                            setStep((currentPage) => currentPage + 1)
+                            }}
+                    ></PrimaryButton>
+
+                    <PrimaryButton
+                        text="Submit"
+                        disabled={isInvalid}
+                        style={{display: isInvalid ? 'none' : 'block'}}
+                        onClick={ handleSubmit }
+                    ></PrimaryButton>
+                    
                 </div>
             </div>
         </div>

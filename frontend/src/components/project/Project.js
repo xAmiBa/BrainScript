@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
 import ReactLoading from "react-loading"
 import handleSendEmail from "../../services/handleSendEmail";
+import PrimaryButton from "../PrimaryButton/PrimaryButton";
 var validator = require("email-validator");
+
 
 const Project = ({navigate}) => {
     const [project, setProject] = useState(() => JSON.parse(window.localStorage.getItem("project")));
     const [email, setEmail] = useState()
+
+    const navigateToProjects = () => {
+        navigate("/browse-projects")
+    }
 
     const onChange = (event) => {
         setEmail(event.target.value)
@@ -21,7 +27,6 @@ const Project = ({navigate}) => {
             project
         )
         alert("Email sent! Check your inbox.")
-        // document.getElementById("email").reset()
     }
 
     useEffect(() => {
@@ -77,10 +82,20 @@ const Project = ({navigate}) => {
             onChange={onChange}
             >
             </input>
-            <button
-            disabled={!validator.validate(email)}
-            onClick={onClick}>SEND</button>
+
+            <PrimaryButton
+                text="Send in email"
+                disabled={!validator.validate(email)}
+                onClick={onClick}
+            ></PrimaryButton>
+
         </div>
+
+        <PrimaryButton
+                text="Browse all projects"
+                onClick={navigateToProjects}
+        ></PrimaryButton>
+
         </div>
         
         )

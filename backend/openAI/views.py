@@ -43,6 +43,14 @@ class ProjectAPIView(views.APIView):
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except JSONDecodeError:
             return JsonResponse({"result": "error","message": "Json decoding error"}, status= 400)
+        
+    def get(self, request):
+        try:
+            projects = Project.objects.all()
+            serializer = ProjectSerializer(projects, many=True)
+            return Response({"projects": serializer.data}, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 class GenerateProject(views.APIView):
     """
