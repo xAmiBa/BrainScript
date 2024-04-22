@@ -16,6 +16,7 @@ class EmailSenderView(views.APIView):
     """
     template id is and id of sendgrid message
     new_project_template by default
+    create more templates: https://mc.sendgrid.com/dynamic-templates
     """
     def post(self, request, template_id = 'd-e71e06a23a27476184f915b3d1b1c6b9'):
         data = json.loads(request.body)
@@ -25,6 +26,7 @@ class EmailSenderView(views.APIView):
 
         if subject and project_data and recipient_email:
             try:
+                print(project_data)
                 msg = EmailMessage(
                     from_email='abaaminaba@gmail.com',
                     to=[recipient_email],
@@ -35,6 +37,6 @@ class EmailSenderView(views.APIView):
                 msg.send(fail_silently=False)
             except BadHeaderError:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
-            return Response(status=status.HTTP_200_OK)
+            return Response({'message': 'Email sent successfully.'}, status=status.HTTP_200_OK)
         else:
             return HttpResponse(status=400)

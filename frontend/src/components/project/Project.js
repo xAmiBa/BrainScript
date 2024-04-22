@@ -13,15 +13,15 @@ const Project = ({navigate}) => {
 
     const onClick = async (event) => {
         event.preventDefault();
-        const apiSenEmailUrl = process.env.REACT_APP_SEND_EMAIL_API_URL;
+        const apiSendEmailUrl = process.env.REACT_APP_SEND_EMAIL_API_URL;
         handleSendEmail(
-            `${apiSenEmailUrl}`,
+            `${apiSendEmailUrl}`,
             email,
             author,
-            description,
-            technologiesList,
-            resourcesList
+            project
         )
+        alert("Email sent! Check your inbox.")
+        // document.getElementById("email").reset()
     }
 
     useEffect(() => {
