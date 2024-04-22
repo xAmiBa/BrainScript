@@ -1,5 +1,4 @@
 import axiosInstance from "./axiosConfig";
-const axios = require('axios').default;
 
 const handleSendEmail = async (apiUrl, email, author, project_data) => {
     let response = await axiosInstance.post("http://localhost:8000/send-email/", {
