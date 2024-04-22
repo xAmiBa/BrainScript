@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Step1Tech from "../FormSteps/Step1Tech";
-import Step2Interests from "../FormSteps/Step2Interests";
-import Step0AboutYou from "../FormSteps/Step0AboutYou";
+import Step1Tech from "../FormSteps/Step1Tech.js";
+import Step2Interests from "../FormSteps/Step2Interests.js";
+import Step0AboutYou from "../FormSteps/Step0AboutYou.js";
 import '../FormSteps/Step.css'
 import ProgressBar from '../ProgressBar/ProgressBar'
 import handleProjectGeneration from "../../services/handleSubmit";
@@ -38,7 +38,6 @@ const Form = ({ navigate }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const apiGenerateUrl = process.env.REACT_APP_GENERATE_PROJECT_API_URL;
-        console.log("API URL IN FORM: ", apiGenerateUrl)
         handleProjectGeneration(
             navigate,
             `${apiGenerateUrl}`,
