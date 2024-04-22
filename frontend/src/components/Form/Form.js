@@ -3,8 +3,13 @@ import Step1Tech from "../FormSteps/Step1Tech.js";
 import Step2Interests from "../FormSteps/Step2Interests.js";
 import Step0AboutYou from "../FormSteps/Step0AboutYou.js";
 import '../FormSteps/Step.css'
+<<<<<<< HEAD
 import ProgressBar from '../ProgressBar/ProgressBar.js'
 import handleProjectGeneration from "../../services/handleSubmit.js";
+=======
+import ProgressBar from '../ProgressBar/ProgressBar'
+import handleProjectGeneration from "../../services/handleSubmit";
+>>>>>>> main
 
 const Form = ({ navigate }) => {
 

@@ -1,9 +1,9 @@
 import './App.css';
 import React from "react";
 import { useNavigate, Routes, Route} from "react-router-dom";
-import HomePage from '../HomePage/HomePage.js';
-import Setup from '../Setup/Setup.js';
-import Project from '../project/Project.js';
+import HomePage from '../HomePage/HomePage';
+import Setup from '../Setup/Setup';
+import Project from '../project/Project';
 
 function App() {
   
