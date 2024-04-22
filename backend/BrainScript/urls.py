@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
 from openAI import views as openAI_views
+from email_sender import views as email_sender_views
 
 router = routers.DefaultRouter()
 
@@ -27,4 +28,5 @@ urlpatterns += [
     path("admin/", admin.site.urls),
     path("project/", openAI_views.ProjectAPIView.as_view()),
     path("generate/", openAI_views.GenerateProject.as_view()),
+    path("send-email/", email_sender_views.EmailSenderView.as_view())
 ]

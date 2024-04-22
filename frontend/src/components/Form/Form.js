@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import Step1Tech from "../FormSteps/Step1Tech";
-import Step2Interests from "../FormSteps/Step2Interests";
-import Step0AboutYou from "../FormSteps/Step0AboutYou";
+import Step1Tech from "../FormSteps/Step1Tech.js";
+import Step2Interests from "../FormSteps/Step2Interests.js";
+import Step0AboutYou from "../FormSteps/Step0AboutYou.js";
 import '../FormSteps/Step.css'
-import ProgressBar from '../ProgressBar/ProgressBar'
+import ProgressBar from '../ProgressBar/ProgressBar.js'
+import handleProjectGeneration from "../../services/handleSubmit.js";
 
-function Form() {
+const Form = ({ navigate }) => {
 
+    console.log("ENV VARIABLE TEST: ", process.env.REACT_APP_GENERATE_PROJECT_API_URL)
     // determine which step we're in
     const [step, setStep] = useState(0);
     const [formData, setFormData] = useState({
@@ -31,6 +33,21 @@ function Form() {
         }
     }
     const isInvalid = Object.values(formData).some(value => value.length < 3)
+    // const [authError, setAuthError] = useState("");
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const apiGenerateUrl = process.env.REACT_APP_GENERATE_PROJECT_API_URL;
+        handleProjectGeneration(
+            navigate,
+            `${apiGenerateUrl}`,
+            formData.skills,
+            formData.skills_to_learn,
+            formData.author,
+            formData.interests,
+            formData.area_of_programming
+        )
+    }
 
     return (
         <div className="form">
@@ -61,7 +78,7 @@ function Form() {
                     <button
                     disabled={isInvalid}
                     style={{display: isInvalid ? 'none' : 'block'}}
-                    //TODO: API CALL onClick={}
+                    onClick={ handleSubmit }
                     > Submit</button>
                 </div>
             </div>
