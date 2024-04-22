@@ -1,5 +1,6 @@
-import logo from '../../static/logo.gif';
 import React from 'react'
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import lottieLogo from '../../static/logo.lottie'
 
 
 const HomePage = ({ navigate }) => {
@@ -11,8 +12,17 @@ const HomePage = ({ navigate }) => {
     return (
         
         <div>
+            <DotLottieReact
+                className="app-logo"
+                src={lottieLogo}
+                width={600}
+                loop
+                autoplay>
+            </DotLottieReact>
+
             <button className='next-button' onClick = {navigateToSetup}>NEXT</button>
-            <img src={logo} className="app-logo" alt="logo" />
+           
+            
             <p>
                 Welcome to
             </p>

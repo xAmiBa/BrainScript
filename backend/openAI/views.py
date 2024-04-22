@@ -61,11 +61,11 @@ class GenerateProject(views.APIView):
 
         try:
             response = client.chat.completions.create(
-                model="gpt-3.5-turbo",
+                model="gpt-4",
                 messages=[
                     {
                     "role": "system",
-                    "content": "You will be provided with user interests, skills with level of knowledge, skills they want to learn and area of programming. Your task is to generate a coding project idea based on their existing skills, interests and skills they want to learn. Generate title, description, technologies and list of free online resources (frameworks and languages documentation links) in JSON format.\nFollow this format:\n{\n\"title\" : \"example title\",\n\"description\" : \"example descrition of the project\",\n\"technologies\" : [\"Python\", \"HTML\", \"CSS\"],\n\"resources\" : [{\"title\": \"python tutorial\", \"link\": \"example_link.com\"}, {\"title\": \"python tutorial2\", \"link\": \"example_link2.com\"}]\n}"
+                    "content": "You will be provided with user interests, skills with level of knowledge, skills they want to learn and area of programming. Your task is to generate a coding project idea based on their existing skills, interests and skills they want to learn. Generate title, description with project structure, technologies and list of free online resources (frameworks and languages documentation links, youtube videos, articles, free courses) in JSON format.\nFollow this format:\n{\n\"title\" : \"example title\",\n\"description\" : \"example descrition of the project\",\n\"technologies\" : [\"Python\", \"HTML\", \"CSS\"],\n\"resources\" : [{\"title\": \"python tutorial\", \"link\": \"example_link.com\"}, {\"title\": \"python tutorial2\", \"link\": \"example_link2.com\"}]\n}"
                     },
                     {
                     "role": "user",
@@ -73,7 +73,7 @@ class GenerateProject(views.APIView):
                     }
                 ],
                 temperature=1,
-                max_tokens=350,
+                max_tokens=700,
                 top_p=1,
                 frequency_penalty=0,
                 presence_penalty=0
