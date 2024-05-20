@@ -1,6 +1,7 @@
 import ProjectCard from "../ProjectCard/ProjectCard";
 import { useEffect, useState } from "react";
 import handleGetProjects from "../../services/handleGetProjects";
+import ProjectPreview from "../ProjectPreview/ProjectPreview";
 
 const ProjectsPage = ({navigate}) => {
 
@@ -9,6 +10,7 @@ const ProjectsPage = ({navigate}) => {
     // side view which will be new component on the side
     
     const [projectList, setProjectList] = useState([]);
+    const [currentProjectPreview, setProjectPreview] = useState(null);
     
     useEffect(() => {
         handleGetProjects(setProjectList)
@@ -16,11 +18,15 @@ const ProjectsPage = ({navigate}) => {
 
     return (
         <div>
-            <h1>PROJECTS PAGE</h1>
-
-            {projectList.map((projectData) => (
-                <ProjectCard projectData={projectData}></ProjectCard>
-              ))}
+            <div className="project-preview">
+                <ProjectPreview currentProject={currentProjectPreview}></ProjectPreview>
+            </div>
+            <div className="project-list">
+                <h1>PROJECTS PAGE</h1>
+                {projectList.map((projectData) => (
+                    <ProjectCard projectData={projectData} setProjectPreview={setProjectPreview} currentProjectPreview={currentProjectPreview}></ProjectCard>
+                ))}
+            </div>
         </div>
     )
 }

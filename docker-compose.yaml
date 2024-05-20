@@ -5,7 +5,8 @@ services:
     build:
       context: ./backend
       dockerfile: docker/Dockerfile
-    image: brainscript:backend
+    image: xamiba/brainscript:backend
+    platform: linux/amd64
     restart: unless-stopped
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
@@ -21,7 +22,7 @@ services:
     build:
       context: ./frontend
       dockerfile: docker/Dockerfile_frontend
-    image: brainscript:frontend
+    image: xamiba/brainscript:frontend
     platform: linux/amd64
     restart: unless-stopped
     ports:
