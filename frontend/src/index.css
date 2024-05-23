@@ -8,41 +8,56 @@
     font-style: "monospace";
     font-weight: 400;
     font-display: swap;
-    src: url(https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap) format('woff2');
-  } 
+    src: url(https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap)
+      format("woff2");
+  }
   body {
     font-family: "Roboto Mono", monospace;
-    @apply text-dark_txt bg-dark_bg
+    @apply text-dark_txt bg-dark_bg;
   }
-} 
+}
 
 @layer components {
   .input-field {
-    @apply bg-dark_txt text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow w-1/2
+    @apply bg-dark_txt text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow w-1/2;
   }
   .form-step-container {
-    @apply flex flex-col items-center gap-10
+    @apply flex flex-col items-center gap-10;
   }
   .progress-invalid {
-    text-shadow: 0 0 5px #dd3679, 0 0 10px #fff, 0 0 20px #dd3679, 0 0 30px #dd3679, 0 0 40px #dd3679, 0 0 50px #dd3679, 0 0 60px #dd3679;
-    @apply text-white 
+    text-shadow:
+      0 0 5px #dd3679,
+      0 0 10px #fff,
+      0 0 20px #dd3679,
+      0 0 30px #dd3679,
+      0 0 40px #dd3679,
+      0 0 50px #dd3679,
+      0 0 60px #dd3679;
+    @apply text-white;
   }
   .progress-valid {
-    @apply text-dark_txt_secondary
+    @apply text-dark_txt_secondary;
   }
   .neon-frame {
-    box-shadow: 0 0 5px #dd3679, 0 0 3px #fff, 0 0 10px #dd3679, 0 0 10px #dd3679, 0 0 15px #dd3679, 0 0 30px #dd3679, 0 0 60px #dd3679;
-    @apply text-dark_txt px-10 py-5 rounded hover:text-neon hover:shadow-none
+    box-shadow:
+      0 0 5px #dd3679,
+      0 0 3px #fff,
+      0 0 10px #dd3679,
+      0 0 10px #dd3679,
+      0 0 15px #dd3679,
+      0 0 30px #dd3679,
+      0 0 60px #dd3679;
+    @apply text-dark_txt px-10 py-5 rounded hover:text-neon hover:shadow-none;
   }
   .disabled-neon-frame:disabled {
-    @apply shadow-none text-dark_bg bg-white bg-opacity-10
+    @apply shadow-none text-dark_bg bg-white bg-opacity-10;
   }
   .scroll-container {
     max-height: 100vh;
     overflow-y: auto;
   }
   .feature-box {
-    @apply bg-white bg-opacity-10 rounded-xl py-10 px-10 shadow-xl hover:bg-dark_bg
+    @apply bg-white bg-opacity-10 rounded-xl py-10 px-10 shadow-xl hover:bg-dark_bg;
   }
 }
 /* body {
