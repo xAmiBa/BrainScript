@@ -1,5 +1,4 @@
 import React from 'react';
-import '../Form/Form.css';
 
 
 const Step2Interests = ({formData, setFormData}) => {
@@ -9,9 +8,10 @@ const Step2Interests = ({formData, setFormData}) => {
       };
 
   return (
-      <div className='interests-container'>
+      <div className='interests-container form-step-container'>
           <p className='description'>What do you love doing when you're not coding {formData.author}? Whether it's gaming, reading, hiking, or anything else, share your passions with me. I’ll use these to come up with a project idea that’s as unique and exciting as your hobbies!</p>
-          <input 
+          <textarea 
+            className='input-field h-16'
             type='text' 
             id="interests" 
             name="interests" 
@@ -19,7 +19,7 @@ const Step2Interests = ({formData, setFormData}) => {
             value={formData.interests}
             onChange={onChange}
             >
-            </input>
+            </textarea>
       </div>
   )
 }

@@ -51,34 +51,37 @@ const Form = ({ navigate }) => {
     }
 
     return (
-        <div className="form">
-            <div className="progress-bar-container">
+        <div className="form font-mono flex flex-col items-center pt-15">
+            <div className="progress-bar-container pb-20">
                 <ProgressBar formData={formData}/>
             </div>
-            <div className="form-container">
-                <div className="header">
+            <div className="flex flex-col justify-center items-center gap-5 w-1/2 form-container bg-white bg-opacity-10 shadow-xl rounded px-10 pt-8 pb-8 mb-4">
+                <div className="header text-2xl">
                     <h1>{FormTitles[step]}</h1>
                 </div>
                 <div className="body">
                     { StepDispaly() }
                 </div>
-                <div className="footer">
+                <div className="footer flex gap-16">
+                    <div className="justify-start">
+                        <PrimaryButton
+                            text="<"
+                            disabled={step === 0}
+                            onClick={() => {
+                                setStep((currentPage) => currentPage - 1)
+                                }}
+                        ></PrimaryButton>
+                    </div>
 
-                    <PrimaryButton
-                        text="Previous Step"
-                        disabled={step === 0}
-                        onClick={() => {
-                            setStep((currentPage) => currentPage - 1)
-                            }}
-                    ></PrimaryButton>
-
-                    <PrimaryButton
-                        text="Next Step"
-                        disabled={step === 2}
-                        onClick={() => {
-                            setStep((currentPage) => currentPage + 1)
-                            }}
-                    ></PrimaryButton>
+                    <div className="ml-auto">
+                        <PrimaryButton
+                            text=">"
+                            disabled={step === 2}
+                            onClick={() => {
+                                setStep((currentPage) => currentPage + 1)
+                                }}
+                        ></PrimaryButton>
+                    </div>
 
                     <PrimaryButton
                         text="Submit"

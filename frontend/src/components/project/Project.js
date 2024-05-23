@@ -47,44 +47,37 @@ const Project = ({navigate}) => {
     const { title, description, technologies, resources } = project.data;
     const author = project.author
 
-    const technologiesList = Object.keys(technologies).map(key => <li key={key}>{technologies[key]}</li>)
-    const resourcesList = Object.keys(resources).map(key => <li key={key}><a href={resources[key]['link']} target='_blank' rel="noreferrer">{resources[key]["title"]}</a> </li>)
-        
     return (
         <div>
-            <div className="TEST">
-                <ProjectPreview currentProject={
-                    {"project": {"technologies" : technologies, "resources" : resources, "title" : title, "description" : description, }, "author" : author}}>
-                    </ProjectPreview>
-                <hr></hr>
+            <div className="columns flex flex-row gap-20 mx-16 my-16">
 
+                <div className="project-column w-1/2">
+                    <ProjectPreview currentProject={
+                        {"project": {"technologies" : technologies, "resources" : resources, "title" : title, "description" : description, }, "author" : author}}>
+                        </ProjectPreview>
+                </div>
+
+                <div className="email-column w-1/2 flex flex-col justify-center items-center">
+                    <p className="mb-10">Would you like to send the project idea to your email?</p>
+                    <input
+                    className="input-field"
+                    type='email'
+                    id='email'
+                    name='email'
+                    placeholder='your_email@email.com'
+                    value={email}
+                    onChange={onChange}
+                    >
+                    </input>
+
+                    <PrimaryButton
+                        text="Send in email"
+                        disabled={!validator.validate(email)}
+                        onClick={onClick}
+                    ></PrimaryButton>
+
+                </div>
             </div>
-
-        <div className="send-email-container">
-            <p>Would you like to send the project idea to your email?</p>
-            <input
-            type='email'
-            id='email'
-            name='email'
-            placeholder='your_email@email.com'
-            value={email}
-            onChange={onChange}
-            >
-            </input>
-
-            <PrimaryButton
-                text="Send in email"
-                disabled={!validator.validate(email)}
-                onClick={onClick}
-            ></PrimaryButton>
-
-        </div>
-
-        <PrimaryButton
-                text="Browse all projects"
-                onClick={navigateToProjects}
-        ></PrimaryButton>
-
         </div>
         
         )

@@ -1,5 +1,0 @@
-.author-container, .tech-container, .interests-container {
-    display: flex;
-    flex-direction: column;
-    max-width: 30%;
-}

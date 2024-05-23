@@ -16,19 +16,23 @@ const HomePage = ({ navigate }) => {
     
     return (
         
-        <div>
-            <p>
-                Welcome to BrainScript
-            </p>
+        <div className='flex flex-col items-center justify-center min-h-screen'>
+            <h1 className='font-bold font-mono text-5xl'>
+                BrainScript
+            </h1>
 
+            <div className='overflow-hidden'>
             <DotLottieReact
-                className="app-logo"
+                className="w-[400px]"
                 src={lottieLogo}
-                width={600}
+                width={100}
                 loop
                 autoplay>
             </DotLottieReact>
+            </div>
            
+           <div className='flex flex-row gap-20'>
+
             <PrimaryButton
                 onClick={navigateToSetup}
                 text="Create your own project"
@@ -38,6 +42,8 @@ const HomePage = ({ navigate }) => {
                 onClick={navigateToProjects}
                 text="Browse all projects"
             ></PrimaryButton>
+
+           </div>
 
         </div>
     )
