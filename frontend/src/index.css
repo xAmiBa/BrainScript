@@ -41,6 +41,9 @@
     max-height: 100vh;
     overflow-y: auto;
   }
+  .feature-box {
+    @apply bg-white bg-opacity-10 rounded-xl py-10 px-10 shadow-xl hover:bg-dark_bg
+  }
 }
 /* body {
   margin: 0;
