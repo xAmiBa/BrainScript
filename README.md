@@ -44,7 +44,7 @@ As a user, I receive a coding project idea with:
 ## Demo
 Watch the demo video to see BrainScript in action:
 
-[![BrainScript Demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)]( https://www.youtube.com/watch?v=4aUCI4QcOxw)
+[BrainScript Demo Video]( https://www.youtube.com/watch?v=4aUCI4QcOxw)
 
 ![Screenshot](/./public/scr1.png)
 ![Screenshot](/./public/scr2.png)
